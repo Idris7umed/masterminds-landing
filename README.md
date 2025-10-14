@@ -1,6 +1,10 @@
-# Masterminds Landing Page
+# Masterminds Institute Landing Page
 
-A modern, responsive educational website landing page designed to showcase an online learning platform.
+A modern, responsive website landing page for Masterminds Institute - a Qatar-based hub for education, innovation, and lifelong learning.
+
+## About Masterminds Institute
+
+Masterminds Institute empowers professionals with skills in AI, emerging technologies, business, and entrepreneurship through training and consulting services, serving as a catalyst for growth and transformation across sectors.
 
 ## Features
 
@@ -8,21 +12,24 @@ A modern, responsive educational website landing page designed to showcase an on
 - 📱 **Fully Responsive**: Optimized for desktop, tablet, and mobile devices
 - 🚀 **Fast Loading**: Lightweight HTML and CSS with no dependencies
 - ♿ **Accessible**: Semantic HTML structure for better accessibility
-- 🎯 **Engaging Sections**:
-  - Hero section with compelling call-to-action
-  - Features showcase with 6 key benefits
-  - About section highlighting the platform's mission
-  - Statistics section with impressive numbers
-  - Call-to-action section encouraging sign-ups
-  - Footer with quick links and contact information
+- 🎯 **Comprehensive Sections**:
+  - Hero section highlighting education, innovation, and lifelong learning
+  - Services showcase (Corporate Training, Executive Coaching, Workshops, Consulting, Educational Tourism)
+  - Sectors served (AI, Business, Banking, ICT, Cybersecurity, Smart Cities, IoT, Metaverse, Oil & Gas, Government)
+  - About section with Purpose and Goal statements
+  - Core Values (Innovation, Quality, Integrity, Sustainability, Impact)
+  - Vision 2030 alignment with Qatar's national priorities
+  - Leadership quote section
+  - Strategic Partners showcase
+  - Contact information and footer
 
 ## Preview
 
 ### Desktop View
-![Desktop View](https://github.com/user-attachments/assets/34258e7f-c19f-4228-8cb6-81535089c2b2)
+![Desktop View](https://github.com/user-attachments/assets/bb5b887a-903c-469a-bd19-72d1095857cb)
 
 ### Mobile View
-![Mobile View](https://github.com/user-attachments/assets/40c9c1ba-0358-4414-959d-de2772357b29)
+![Mobile View](https://github.com/user-attachments/assets/913341c9-3f45-4259-9b1e-76524f1091f9)
 
 ## Getting Started
 
