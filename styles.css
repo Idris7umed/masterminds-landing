@@ -244,6 +244,193 @@ body {
     opacity: 0.9;
 }
 
+/* Sectors Section */
+.sectors {
+    padding: 80px 0;
+    background: var(--white);
+}
+
+.sectors-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.sector-item {
+    background: var(--light-color);
+    padding: 1.5rem;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: 600;
+    color: var(--dark-color);
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.sector-item:hover {
+    background: var(--white);
+    border-color: var(--primary-color);
+    transform: translateY(-5px);
+    box-shadow: var(--shadow);
+}
+
+/* Core Values Section */
+.core-values {
+    padding: 80px 0;
+    background: var(--light-color);
+}
+
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.value-card {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease;
+}
+
+.value-card:hover {
+    transform: translateY(-10px);
+}
+
+.value-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.value-card h3 {
+    color: var(--dark-color);
+    font-size: 1.2rem;
+}
+
+/* Vision 2030 Section */
+.vision2030 {
+    padding: 80px 0;
+    background: var(--white);
+}
+
+.vision-intro {
+    text-align: center;
+    font-size: 1.2rem;
+    color: var(--text-light);
+    margin-bottom: 3rem;
+}
+
+.vision-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.vision-card {
+    background: var(--light-color);
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    transition: all 0.3s ease;
+    border-left: 4px solid var(--primary-color);
+}
+
+.vision-card:hover {
+    background: var(--white);
+    box-shadow: var(--shadow);
+    transform: translateX(10px);
+}
+
+.vision-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.vision-card h3 {
+    color: var(--dark-color);
+    margin-bottom: 1rem;
+}
+
+.vision-card p {
+    color: var(--text-light);
+    line-height: 1.8;
+}
+
+/* Quote Section */
+.quote-section {
+    background: var(--dark-color);
+    color: var(--white);
+    padding: 60px 0;
+}
+
+.leadership-quote {
+    font-size: 1.3rem;
+    font-style: italic;
+    line-height: 1.8;
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px;
+    border-left: 4px solid var(--primary-color);
+    padding-left: 2rem;
+}
+
+/* Partners Section */
+.partners {
+    padding: 80px 0;
+    background: var(--light-color);
+}
+
+.partners-intro {
+    text-align: center;
+    font-size: 1.2rem;
+    color: var(--text-light);
+    margin-bottom: 3rem;
+}
+
+.partners-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.partner-card {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+}
+
+.partner-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+}
+
+.partner-card h4 {
+    color: var(--primary-color);
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+}
+
+.partner-card p {
+    color: var(--text-light);
+    font-size: 0.95rem;
+}
+
+/* About Section Updates */
+.about-text h3 {
+    color: var(--dark-color);
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+}
+
 /* CTA Section */
 .cta {
     background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
@@ -345,8 +532,9 @@ body {
 /* Responsive Design */
 @media (max-width: 768px) {
     .nav-links {
-        gap: 1rem;
-        font-size: 0.9rem;
+        gap: 0.5rem;
+        font-size: 0.75rem;
+        flex-wrap: wrap;
     }
     
     .hero-title {
@@ -366,6 +554,22 @@ body {
         grid-template-columns: 1fr;
     }
     
+    .sectors-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .values-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .vision-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .partners-grid {
+        grid-template-columns: 1fr;
+    }
+    
     .about-content {
         grid-template-columns: 1fr;
     }
@@ -381,27 +585,40 @@ body {
     .section-title {
         font-size: 2rem;
     }
+    
+    .leadership-quote {
+        font-size: 1.1rem;
+        padding-left: 1rem;
+    }
 }
 
 @media (max-width: 480px) {
     .logo h1 {
-        font-size: 1.4rem;
+        font-size: 1.2rem;
     }
     
     .nav-links {
-        gap: 0.5rem;
-        font-size: 0.8rem;
+        gap: 0.3rem;
+        font-size: 0.65rem;
     }
     
     .hero {
-        padding: 80px 0;
+        padding: 60px 0;
     }
     
     .hero-title {
-        font-size: 2rem;
+        font-size: 1.8rem;
     }
     
     .stats-grid {
         grid-template-columns: 1fr;
+    }
+    
+    .values-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .section-title {
+        font-size: 1.6rem;
     }
 }
