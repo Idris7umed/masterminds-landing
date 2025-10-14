@@ -6,8 +6,8 @@
 }
 
 :root {
-    --primary-color: #6c5ce7;
-    --secondary-color: #5f27cd;
+    --primary-color: #195160;
+    --secondary-color: #e67027;
     --accent-color: #7bed9f;
     --dark-color: #2d3436;
     --light-color: #f5f6fa;
@@ -112,6 +112,17 @@ body {
 .hero-title .highlight {
     color: var(--primary-color);
     font-style: italic;
+}
+
+.hero-title .highlight::after {
+    content: '|';
+    animation: blink 1s infinite;
+    margin-left: 2px;
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
 }
 
 .hero-subtitle {
