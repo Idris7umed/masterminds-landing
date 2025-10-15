@@ -88,16 +88,23 @@
         <div class="container">
             <h2 class="section-title">Sectors We Serve</h2>
             <div class="sectors-grid">
-                <div class="sector-item">🤖 AI & Emerging Technologies</div>
-                <div class="sector-item">💼 Business & Management</div>
-                <div class="sector-item">🏦 Banking & Investment</div>
-                <div class="sector-item">💻 ICT & Computer Science</div>
-                <div class="sector-item">🔒 Cybersecurity</div>
-                <div class="sector-item">🏙️ Smart Cities & IoT</div>
-                <div class="sector-item">🥽 Metaverse Technology</div>
-                <div class="sector-item">⚡ Oil, Gas & Energy</div>
-                <div class="sector-item">🎓 Academic Institutions</div>
-                <div class="sector-item">🏛️ Government & Public Authorities</div>
+                <div class="sectors-carousel">
+                    <div class="sector-item">🤖 AI & Emerging Technologies</div>
+                    <div class="sector-item">💼 Business & Management</div>
+                    <div class="sector-item">🏦 Banking & Investment</div>
+                    <div class="sector-item">💻 ICT & Computer Science</div>
+                    <div class="sector-item">🔒 Cybersecurity</div>
+                    <div class="sector-item">🏙️ Smart Cities & IoT</div>
+                    <div class="sector-item">🥽 Metaverse Technology</div>
+                    <div class="sector-item">⚡ Oil, Gas & Energy</div>
+                    <div class="sector-item">🎓 Academic Institutions</div>
+                    <div class="sector-item">🏛️ Government & Public Authorities</div>
+                </div>
+            </div>
+            <div class="carousel-controls">
+                <button class="carousel-btn" id="sectors-prev" aria-label="Previous">←</button>
+                <div class="carousel-indicators" id="sectors-indicators"></div>
+                <button class="carousel-btn" id="sectors-next" aria-label="Next">→</button>
             </div>
         </div>
     </section>
@@ -128,26 +135,33 @@
         <div class="container">
             <h2 class="section-title">Core Values</h2>
             <div class="values-grid">
-                <div class="value-card">
-                    <div class="value-icon">💡</div>
-                    <h3>Innovation with Purpose</h3>
+                <div class="values-carousel">
+                    <div class="value-card">
+                        <div class="value-icon">💡</div>
+                        <h3>Innovation with Purpose</h3>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">📚</div>
+                        <h3>Quality in Education</h3>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">⚖️</div>
+                        <h3>Integrity in Action</h3>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">🌱</div>
+                        <h3>Sustainability for Growth</h3>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">🚀</div>
+                        <h3>Transformative Impact</h3>
+                    </div>
                 </div>
-                <div class="value-card">
-                    <div class="value-icon">📚</div>
-                    <h3>Quality in Education</h3>
-                </div>
-                <div class="value-card">
-                    <div class="value-icon">⚖️</div>
-                    <h3>Integrity in Action</h3>
-                </div>
-                <div class="value-card">
-                    <div class="value-icon">🌱</div>
-                    <h3>Sustainability for Growth</h3>
-                </div>
-                <div class="value-card">
-                    <div class="value-icon">🚀</div>
-                    <h3>Transformative Impact</h3>
-                </div>
+            </div>
+            <div class="carousel-controls">
+                <button class="carousel-btn" id="values-prev" aria-label="Previous">←</button>
+                <div class="carousel-indicators" id="values-indicators"></div>
+                <button class="carousel-btn" id="values-next" aria-label="Next">→</button>
             </div>
         </div>
     </section>
@@ -313,6 +327,134 @@
         // Start typing animation when page loads
         window.addEventListener('DOMContentLoaded', () => {
             setTimeout(type, 500);
+        });
+
+        // Carousel functionality
+        class Carousel {
+            constructor(carouselId, itemsPerPage = 3) {
+                this.carousel = document.querySelector(`#${carouselId}-prev`).closest('.container').querySelector(`.${carouselId}-carousel`);
+                this.prevBtn = document.getElementById(`${carouselId}-prev`);
+                this.nextBtn = document.getElementById(`${carouselId}-next`);
+                this.indicators = document.getElementById(`${carouselId}-indicators`);
+                this.items = this.carousel.children;
+                this.currentIndex = 0;
+                this.itemsPerPage = itemsPerPage;
+                this.totalPages = Math.ceil(this.items.length / this.itemsPerPage);
+                this.autoSlideInterval = null;
+
+                this.init();
+            }
+
+            init() {
+                this.createIndicators();
+                this.updateCarousel();
+                this.startAutoSlide();
+
+                this.prevBtn.addEventListener('click', () => this.prev());
+                this.nextBtn.addEventListener('click', () => this.next());
+
+                // Pause auto-slide on hover
+                this.carousel.closest('section').addEventListener('mouseenter', () => this.stopAutoSlide());
+                this.carousel.closest('section').addEventListener('mouseleave', () => this.startAutoSlide());
+
+                // Update on resize
+                window.addEventListener('resize', () => {
+                    this.updateItemsPerPage();
+                    this.updateCarousel();
+                });
+            }
+
+            updateItemsPerPage() {
+                const width = window.innerWidth;
+                if (width <= 480) {
+                    this.itemsPerPage = 1;
+                } else if (width <= 768) {
+                    this.itemsPerPage = 2;
+                } else {
+                    this.itemsPerPage = 3;
+                }
+                this.totalPages = Math.ceil(this.items.length / this.itemsPerPage);
+                if (this.currentIndex >= this.totalPages) {
+                    this.currentIndex = this.totalPages - 1;
+                }
+                this.createIndicators();
+            }
+
+            createIndicators() {
+                this.indicators.innerHTML = '';
+                for (let i = 0; i < this.totalPages; i++) {
+                    const indicator = document.createElement('button');
+                    indicator.classList.add('carousel-indicator');
+                    if (i === this.currentIndex) {
+                        indicator.classList.add('active');
+                    }
+                    indicator.addEventListener('click', () => this.goToPage(i));
+                    this.indicators.appendChild(indicator);
+                }
+            }
+
+            updateCarousel() {
+                const translateX = -this.currentIndex * 100;
+                this.carousel.style.transform = `translateX(${translateX}%)`;
+
+                // Update indicators
+                const indicators = this.indicators.querySelectorAll('.carousel-indicator');
+                indicators.forEach((indicator, index) => {
+                    indicator.classList.toggle('active', index === this.currentIndex);
+                });
+
+                // Update button states
+                this.prevBtn.disabled = this.currentIndex === 0;
+                this.nextBtn.disabled = this.currentIndex === this.totalPages - 1;
+            }
+
+            prev() {
+                if (this.currentIndex > 0) {
+                    this.currentIndex--;
+                    this.updateCarousel();
+                    this.resetAutoSlide();
+                }
+            }
+
+            next() {
+                if (this.currentIndex < this.totalPages - 1) {
+                    this.currentIndex++;
+                    this.updateCarousel();
+                    this.resetAutoSlide();
+                }
+            }
+
+            goToPage(index) {
+                this.currentIndex = index;
+                this.updateCarousel();
+                this.resetAutoSlide();
+            }
+
+            startAutoSlide() {
+                this.autoSlideInterval = setInterval(() => {
+                    if (this.currentIndex < this.totalPages - 1) {
+                        this.next();
+                    } else {
+                        this.currentIndex = 0;
+                        this.updateCarousel();
+                    }
+                }, 5000);
+            }
+
+            stopAutoSlide() {
+                clearInterval(this.autoSlideInterval);
+            }
+
+            resetAutoSlide() {
+                this.stopAutoSlide();
+                this.startAutoSlide();
+            }
+        }
+
+        // Initialize carousels when DOM is loaded
+        window.addEventListener('DOMContentLoaded', () => {
+            new Carousel('sectors', 3);
+            new Carousel('values', 3);
         });
     </script>
 </body>
