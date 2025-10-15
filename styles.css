@@ -54,6 +54,11 @@ body {
     font-weight: 700;
 }
 
+.logo-image {
+    height: 50px;
+    width: auto;
+}
+
 .nav-links {
     display: flex;
     list-style: none;
@@ -123,6 +128,70 @@ body {
 @keyframes blink {
     0%, 50% { opacity: 1; }
     51%, 100% { opacity: 0; }
+}
+
+/* Animated Lines inspired by logo */
+.animated-lines {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.line {
+    position: absolute;
+    width: 3px;
+    height: 200px;
+    opacity: 0.4;
+}
+
+.line-1 {
+    background: linear-gradient(180deg, transparent, var(--primary-color), transparent);
+    left: 10%;
+    top: -200px;
+    animation: slideLine1 8s ease-in-out infinite;
+}
+
+.line-2 {
+    background: linear-gradient(180deg, transparent, var(--secondary-color), transparent);
+    left: 30%;
+    top: -200px;
+    animation: slideLine2 10s ease-in-out infinite;
+}
+
+.line-3 {
+    background: linear-gradient(180deg, transparent, #ffd700, transparent);
+    right: 25%;
+    top: -200px;
+    animation: slideLine3 9s ease-in-out infinite;
+}
+
+.line-4 {
+    background: linear-gradient(180deg, transparent, var(--primary-color), transparent);
+    right: 10%;
+    top: -200px;
+    animation: slideLine4 11s ease-in-out infinite;
+}
+
+@keyframes slideLine1 {
+    0%, 100% { transform: translateY(0) rotate(15deg); }
+    50% { transform: translateY(600px) rotate(15deg); }
+}
+
+@keyframes slideLine2 {
+    0%, 100% { transform: translateY(0) rotate(-12deg); }
+    50% { transform: translateY(700px) rotate(-12deg); }
+}
+
+@keyframes slideLine3 {
+    0%, 100% { transform: translateY(0) rotate(18deg); }
+    50% { transform: translateY(650px) rotate(18deg); }
+}
+
+@keyframes slideLine4 {
+    0%, 100% { transform: translateY(0) rotate(-15deg); }
+    50% { transform: translateY(720px) rotate(-15deg); }
 }
 
 .hero-subtitle {
