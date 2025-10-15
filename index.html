@@ -11,7 +11,7 @@
     <nav class="navbar">
         <div class="container">
             <div class="logo">
-                <h1>🎓 Masterminds Institute</h1>
+                <img src="masterminds-logo.svg" alt="Masterminds Institute" class="logo-image">
             </div>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
@@ -26,9 +26,15 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero">
+        <div class="animated-lines">
+            <div class="line line-1"></div>
+            <div class="line line-2"></div>
+            <div class="line line-3"></div>
+            <div class="line line-4"></div>
+        </div>
         <div class="container">
             <div class="hero-content">
-                <h2 class="hero-title">The art of <span class="highlight">Education, Innovation</span> & Lifelong Learning</h2>
+                <h2 class="hero-title">The art of <span class="highlight" id="typed"></span></h2>
                 <p class="hero-subtitle">Master the art of professional development with Masterminds Institute. Qatar-based hub empowering professionals with skills in AI, emerging technologies, business, and entrepreneurship through world-class training programs.</p>
                 <div class="hero-buttons">
                     <a href="#services" class="btn btn-primary">🚀 Explore Services</a>
@@ -261,5 +267,53 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        // Custom typing animation
+        const typedElement = document.getElementById('typed');
+        const texts = ['Education, Innovation', 'Education, Innovation & Lifelong Learning'];
+        let textIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let isPaused = false;
+
+        function type() {
+            const currentText = texts[textIndex];
+            
+            if (isPaused) {
+                setTimeout(type, 1000);
+                isPaused = false;
+                return;
+            }
+            
+            if (!isDeleting && charIndex < currentText.length) {
+                typedElement.textContent += currentText.charAt(charIndex);
+                charIndex++;
+                setTimeout(type, 50);
+            } else if (isDeleting && charIndex > 0) {
+                typedElement.textContent = currentText.substring(0, charIndex - 1);
+                charIndex--;
+                setTimeout(type, 30);
+            } else if (!isDeleting && charIndex === currentText.length) {
+                if (textIndex === 0) {
+                    isPaused = true;
+                    isDeleting = true;
+                    setTimeout(type, 1000);
+                } else {
+                    // Stop at the final text
+                    return;
+                }
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                textIndex++;
+                setTimeout(type, 200);
+            }
+        }
+
+        // Start typing animation when page loads
+        window.addEventListener('DOMContentLoaded', () => {
+            setTimeout(type, 500);
+        });
+    </script>
 </body>
 </html>
